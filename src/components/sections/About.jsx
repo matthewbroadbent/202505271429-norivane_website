@@ -22,7 +22,7 @@ const About = () => {
           <div>
             <SectionHeading
               title="Expert Guidance for Your Business Exit"
-              subtitle="With 3 decades of experience, I've been selling, buying and investing in businesses just like yours"
+              subtitle="With 30 years experience as a Deloitte trained Chartered Accountant, I've sold, bought and invested in businesses just like yours"
               align="left"
             />
             
@@ -34,7 +34,7 @@ const About = () => {
               className="space-y-6 text-secondary-900"
             >
               <p>
-                At Norivane, we specialise in guiding CEO's and MD's and business owners through the complex process of selling their companies with turnover between £1m and £20m. Our approach is born out of years experience in transactions just like this; now reducing the need for expensive lawyers and accountants until they are truly needed to complete the deal.
+                At Norivane, we specialise in guiding CEO's and MD's and business owners through the complex process of selling their companies with turnover between £1m and £20m. The approach is born out of years of experience in transactions just like this; now reducing the need for expensive lawyers and accountants until they are needed to complete the deal.
               </p>
               
               <p>
