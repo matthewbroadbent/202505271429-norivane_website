@@ -38,11 +38,11 @@ const About = () => {
               </p>
               
               <p>
-                Unlike traditional business brokers who focus solely on the transaction, we take a holistic approach that considers your personal goals, legacy concerns, and post-exit plans. Our coaching methodology prepares both you and your business for a successful transition.
+                We take a holistic approach that considers your personal goals, legacy concerns, and post-exit plans. Our coaching methodology prepares both you and your business for a successful transition. We are not a business broker.
               </p>
               
               <p>
-                We understand that selling your business is likely the most significant financial event of your life. Our proven process has helped dozens of business owners achieve premium valuations—on average 30% higher than initial market estimates.
+                We understand that selling your business is likely the most significant financial event of your life. Our simple formula is a proven process that has helped me and dozens of business owners achieve premium valuations over initial estimates and smooth (almost) stress free transactions.
               </p>
               
               <div className="pt-4">
