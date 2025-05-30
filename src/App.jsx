@@ -9,6 +9,7 @@ import Contact from './pages/ContactPage'
 import Booking from './pages/BookingPage'
 import Settings from './pages/Settings'
 import NotFound from './pages/NotFoundPage'
+import ProcessPage from './pages/ProcessPage'
 
 function App() {
   const location = useLocation()
@@ -34,6 +35,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/process" element={<ProcessPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

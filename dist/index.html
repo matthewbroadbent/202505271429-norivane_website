@@ -4,16 +4,58 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Norivane | Expert CEO Coaching for Business Sales</title>
-    <!-- Add Montserrat font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-3daa4d2f.js"></script>
+    <title>Norivane</title>
+    <script>
+      // This helps with direct URL access in production
+      (function() {
+        // Don't run this in development
+        if (window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1') {
+          return;
+        }
+        
+        // Get the path from the URL
+        var path = window.location.pathname;
+        
+        // Store the path in sessionStorage
+        if (path !== '/' && !window.location.search.includes('_redirected=true')) {
+          sessionStorage.setItem('redirectPath', path);
+          // Redirect to the root with a flag to prevent infinite loops
+          window.location.href = '/?_redirected=true';
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-78ea2f3a.js"></script>
     <link rel="stylesheet" href="/assets/index-50778c23.css">
   </head>
   <body>
     <div id="root"></div>
     
+    <script>
+      // This helps with direct URL access in production
+      (function() {
+        // Don't run this in development
+        if (window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1') {
+          return;
+        }
+        
+        // Check if we were redirected and need to navigate to the stored path
+        if (window.location.search.includes('_redirected=true')) {
+          var path = sessionStorage.getItem('redirectPath');
+          if (path) {
+            // Clear the stored path
+            sessionStorage.removeItem('redirectPath');
+            // Wait for the app to initialize before navigating
+            window.addEventListener('load', function() {
+              setTimeout(function() {
+                // Use history API to avoid a page reload
+                window.history.replaceState(null, '', path);
+              }, 100);
+            });
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
