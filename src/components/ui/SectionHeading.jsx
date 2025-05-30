@@ -22,7 +22,7 @@ const SectionHeading = ({ title, subtitle, align = 'center', darkBackground = fa
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className={`section-title ${textColorClasses}`}
+        className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${textColorClasses}`}
       >
         {title}
       </motion.h2>

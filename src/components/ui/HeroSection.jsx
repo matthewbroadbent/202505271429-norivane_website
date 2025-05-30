@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import BookingButton from './BookingButton';
 
 const HeroSection = () => {
   return (
@@ -39,7 +38,12 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap gap-4"
             >
-              <BookingButton className="mb-4 sm:mb-0" />
+              <Link 
+                to="/booking" 
+                className="btn-primary mb-4 sm:mb-0"
+              >
+                Book a Consultation
+              </Link>
               
               <Link 
                 to="/process" 
@@ -65,7 +69,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

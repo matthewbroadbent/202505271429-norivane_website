@@ -18,7 +18,7 @@ function App() {
     <>
       <ScrollToTop />
       <Header />
-      <main className="min-h-screen pt-20">
+      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
