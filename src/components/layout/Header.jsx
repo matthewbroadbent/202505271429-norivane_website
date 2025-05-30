@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import Logo from '../ui/Logo'
-import BookingButton from '../booking/BookingButton'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
   
   const navigation = [
     { name: 'Home', href: '/' },
@@ -31,8 +31,12 @@ const Header = () => {
     setIsOpen(false)
   }, [location])
   
+  const handleBookConsultation = () => {
+    navigate('/booking')
+  }
+  
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-elegant py-3' : 'bg-primary-700 py-5'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-elegant py-3' : 'bg-primary-500 py-5'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
           <Logo variant={isScrolled ? 'dark' : 'light'} />
@@ -54,10 +58,12 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <BookingButton 
-              text="Book a Consultation"
-              className={`btn ${isScrolled ? 'btn-accent' : 'bg-accent-500 text-white hover:bg-accent-600'}`}
-            />
+            <button 
+              onClick={handleBookConsultation}
+              className="btn-accent"
+            >
+              Book a Consultation
+            </button>
           </nav>
           
           {/* Mobile Navigation Toggle */}
@@ -94,11 +100,12 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <BookingButton 
-                text="Book a Consultation"
+              <button 
+                onClick={handleBookConsultation}
                 className="btn-accent w-full text-center mt-4"
-                fullWidth={true}
-              />
+              >
+                Book a Consultation
+              </button>
             </nav>
           </div>
         </motion.div>

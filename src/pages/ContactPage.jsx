@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import ContactForm from '../components/ui/ContactForm'
-import BookingButton from '../components/booking/BookingButton'
 
 const ContactPage = () => {
   useEffect(() => {
@@ -15,81 +16,210 @@ const ContactPage = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary-800">
+        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary-900">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-sans font-semibold text-white mb-6">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl md:text-5xl font-serif font-semibold text-white mb-6"
+              >
                 Contact Us
-              </h1>
-              <p className="text-xl text-primary-100">
-                Get in touch with our team to discuss how we can help with your business exit strategy
-              </p>
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-xl text-primary-100"
+              >
+                Let's discuss how we can help you achieve a successful business exit
+              </motion.p>
             </div>
           </div>
         </section>
         
-        {/* Contact Content */}
+        {/* Contact Section */}
         <section className="section bg-secondary-50">
           <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-3xl font-sans font-semibold mb-6">Get in Touch</h2>
-                <p className="text-lg text-secondary-700 mb-8">
-                  Whether you're ready to start planning your exit strategy or just want to learn more about our services, we're here to help. Fill out the form, and one of our experts will get back to you shortly.
-                </p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              {/* Contact Info */}
+              <div className="lg:col-span-1">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl md:text-3xl font-serif font-semibold mb-6"
+                >
+                  Get in Touch
+                </motion.h2>
                 
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-secondary-600 mb-8"
+                >
+                  We're here to answer your questions about the business exit process. Reach out to schedule a confidential consultation.
+                </motion.p>
+                
+                <div className="space-y-6">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="flex items-start"
+                  >
+                    <div className="flex-shrink-0 bg-primary-100 p-3 rounded-full text-primary-700">
+                      <FiMail size={20} />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-secondary-900 mb-1">Phone</h3>
-                      <p className="text-secondary-600">+44 (0) 123 456 7890</p>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-secondary-900">Email</h3>
+                      <a href="mailto:contact@norivane.com" className="text-secondary-600 hover:text-primary-700 transition-colors duration-200">
+                        contact@norivane.com
+                      </a>
                     </div>
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="flex items-start"
+                  >
+                    <div className="flex-shrink-0 bg-primary-100 p-3 rounded-full text-primary-700">
+                      <FiPhone size={20} />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-secondary-900 mb-1">Email</h3>
-                      <p className="text-secondary-600">contact@norivane.com</p>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-secondary-900">Phone</h3>
+                      <a href="tel:+441234567890" className="text-secondary-600 hover:text-primary-700 transition-colors duration-200">
+                        +44 (0) 123 456 7890
+                      </a>
                     </div>
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 flex items-center justify-center mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="flex items-start"
+                  >
+                    <div className="flex-shrink-0 bg-primary-100 p-3 rounded-full text-primary-700">
+                      <FiMapPin size={20} />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-secondary-900 mb-1">Address</h3>
-                      <p className="text-secondary-600">123 Business Street, London, UK</p>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-secondary-900">Office</h3>
+                      <p className="text-secondary-600">
+                        123 Business Street<br />
+                        London, UK
+                      </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
                 
-                <div className="mb-8">
-                  <h3 className="text-xl font-sans font-semibold mb-4">Book a Consultation</h3>
-                  <p className="text-secondary-700 mb-4">
-                    Ready to discuss your exit strategy in detail? Schedule a 30-minute consultation with one of our experts.
-                  </p>
-                  <BookingButton 
-                    text="Schedule a Consultation"
-                    className="btn-accent"
-                  />
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="mt-12"
+                >
+                  <h3 className="text-lg font-medium text-secondary-900 mb-4">Office Hours</h3>
+                  <ul className="space-y-2 text-secondary-600">
+                    <li className="flex justify-between">
+                      <span>Monday - Friday:</span>
+                      <span>9:00 AM - 5:30 PM</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Saturday:</span>
+                      <span>By appointment</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Sunday:</span>
+                      <span>Closed</span>
+                    </li>
+                  </ul>
+                </motion.div>
               </div>
               
-              <ContactForm />
+              {/* Contact Form */}
+              <div className="lg:col-span-2">
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* FAQ Section */}
+        <section className="section bg-white">
+          <div className="container-custom">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl md:text-4xl font-serif font-semibold mb-6 text-center"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            
+            <div className="max-w-3xl mx-auto mt-12">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="mb-6"
+              >
+                <h3 className="text-xl font-serif font-medium mb-3">What happens after I submit the contact form?</h3>
+                <p className="text-secondary-600">
+                  After submitting the form, you'll receive an acknowledgment email. One of our senior advisors will then reach out within 1 business day to schedule an initial consultation at a time convenient for you.
+                </p>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="mb-6"
+              >
+                <h3 className="text-xl font-serif font-medium mb-3">Is my information kept confidential?</h3>
+                <p className="text-secondary-600">
+                  Absolutely. We understand the sensitive nature of business exit planning. All communications and information shared with us are kept strictly confidential, protected by both our privacy policy and non-disclosure agreements.
+                </p>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mb-6"
+              >
+                <h3 className="text-xl font-serif font-medium mb-3">What should I prepare for the initial consultation?</h3>
+                <p className="text-secondary-600">
+                  The initial consultation is primarily a conversation about your goals and timeline. It's helpful to have a general understanding of your business financials, growth trajectory, and any specific exit objectives you may have, but detailed documentation isn't required for this first meeting.
+                </p>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <h3 className="text-xl font-serif font-medium mb-3">Is there a fee for the initial consultation?</h3>
+                <p className="text-secondary-600">
+                  No, the initial consultation is complimentary. It allows us to understand your situation and determine if our services are a good fit for your needs. There's no obligation to proceed with our services after this meeting.
+                </p>
+              </motion.div>
             </div>
           </div>
         </section>

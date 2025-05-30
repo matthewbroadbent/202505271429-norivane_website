@@ -15,10 +15,13 @@
     "framer-motion": "^10.12.18",
     "react-intersection-observer": "^9.5.2",
     "react-icons": "^4.10.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.0",
+    "@mui/x-date-pickers": "^6.10.0",
     "date-fns": "^2.30.0",
-    "react-datepicker": "^4.16.0",
     "gapi-script": "^1.2.0",
-    "axios": "^1.4.0"
+    "react-google-calendar-api": "^2.2.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
