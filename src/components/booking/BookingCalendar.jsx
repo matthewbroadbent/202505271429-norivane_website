@@ -12,6 +12,9 @@ const BookingCalendar = ({ onBookingComplete, customerDetails }) => {
   const [bookingStatus, setBookingStatus] = useState({ status: 'idle', message: '' });
   const [dateRange, setDateRange] = useState([]);
   const [calendarError, setCalendarError] = useState(null);
+  const [initAttempts, setInitAttempts] = useState(0);
+  const maxInitAttempts = 5; // Increased from 3 to 5
+  const retryDelays = [1000, 2000, 4000, 8000, 16000]; // Exponential backoff
 
   // Initialize date range - today to 4 working days ahead
   useEffect(() => {
@@ -34,36 +37,79 @@ const BookingCalendar = ({ onBookingComplete, customerDetails }) => {
     return maxDate;
   };
 
-  // Initialize Google Calendar API
+  // Initialize Google Calendar API with retry mechanism
   useEffect(() => {
     const initCalendar = async () => {
+      if (initAttempts >= maxInitAttempts) {
+        console.error(`Failed to initialize calendar after ${maxInitAttempts} attempts`);
+        setCalendarError(`Failed to connect to calendar after ${maxInitAttempts} attempts. Please try again later.`);
+        setIsLoading(false);
+        return;
+      }
+
       try {
+        console.log(`Starting calendar initialization (attempt ${initAttempts + 1}/${maxInitAttempts})`);
+        setIsLoading(true);
+        
+        // Check if we're in development mode
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Development mode detected, using mock implementation');
+          await GoogleCalendarService.init();
+          setCalendarError(null);
+          
+          // Fetch mock slots for the selected date
+          const startDateTime = startOfDay(selectedDate);
+          const endDateTime = endOfDay(selectedDate);
+          const slots = await GoogleCalendarService.getAvailableSlots(startDateTime, endDateTime);
+          setAvailableSlots(slots);
+          setIsLoading(false);
+          return;
+        }
+        
+        // For production, initialize with retry mechanism
         await GoogleCalendarService.init();
+        
+        console.log('Calendar initialization successful');
         setCalendarError(null);
       } catch (error) {
         console.error('Failed to initialize calendar:', error);
-        setCalendarError('Failed to connect to calendar. Please try again.');
-      } finally {
-        setIsLoading(false);
+        
+        // If we haven't reached max attempts, try again with exponential backoff
+        if (initAttempts < maxInitAttempts - 1) {
+          const nextAttempt = initAttempts + 1;
+          const delayTime = retryDelays[nextAttempt - 1] || 1000;
+          
+          console.log(`Retrying calendar initialization in ${delayTime}ms (attempt ${nextAttempt}/${maxInitAttempts})`);
+          setInitAttempts(nextAttempt);
+          setTimeout(initCalendar, delayTime);
+        } else {
+          setCalendarError('Failed to connect to calendar. Please try again.');
+          setIsLoading(false);
+        }
+        return;
       }
+      
+      setIsLoading(false);
     };
 
     initCalendar();
-  }, []);
+  }, [initAttempts, selectedDate]);
 
   // Load available slots when date changes
   useEffect(() => {
     const fetchAvailableSlots = async () => {
-      if (calendarError || !selectedDate) return;
+      if (calendarError || !selectedDate || !GoogleCalendarService.isInitialized) return;
       
       setIsLoading(true);
       
       try {
+        console.log('Fetching available slots for date:', selectedDate);
         // Set time to start of day and end of day
         const startDateTime = startOfDay(selectedDate);
         const endDateTime = endOfDay(selectedDate);
         
         const slots = await GoogleCalendarService.getAvailableSlots(startDateTime, endDateTime);
+        console.log('Retrieved slots:', slots.length);
         
         // Filter slots based on minimum advance time (3 hours)
         const now = new Date();
@@ -73,18 +119,32 @@ const BookingCalendar = ({ onBookingComplete, customerDetails }) => {
           return isAfter(slot.start, minAdvanceTime);
         });
         
+        console.log('Filtered slots:', filteredSlots.length);
         setAvailableSlots(filteredSlots);
         setCalendarError(null);
       } catch (error) {
         console.error('Error fetching available slots:', error);
-        setCalendarError('Could not retrieve available slots. Please try again.');
-        setAvailableSlots([]);
+        
+        // If we're in development mode, use mock data
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Using mock data for development');
+          const startDateTime = startOfDay(selectedDate);
+          const endDateTime = endOfDay(selectedDate);
+          const mockSlots = await GoogleCalendarService.getMockAvailableSlots(startDateTime, endDateTime);
+          setAvailableSlots(mockSlots);
+        } else {
+          setCalendarError('Could not retrieve available slots. Please try again.');
+          setAvailableSlots([]);
+        }
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchAvailableSlots();
+    // Only fetch slots if calendar is initialized and no error
+    if (GoogleCalendarService.isInitialized) {
+      fetchAvailableSlots();
+    }
   }, [selectedDate, calendarError]);
 
   const handleDateChange = (date) => {
@@ -130,23 +190,7 @@ const BookingCalendar = ({ onBookingComplete, customerDetails }) => {
 
   const handleRetryConnection = async () => {
     setCalendarError(null);
-    setIsLoading(true);
-    
-    try {
-      await GoogleCalendarService.init();
-      
-      // Reload slots for the selected date
-      const startDateTime = startOfDay(selectedDate);
-      const endDateTime = endOfDay(selectedDate);
-      
-      const slots = await GoogleCalendarService.getAvailableSlots(startDateTime, endDateTime);
-      setAvailableSlots(slots);
-    } catch (error) {
-      console.error('Failed to reconnect to calendar:', error);
-      setCalendarError('Failed to connect to calendar. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    setInitAttempts(0); // Reset attempt counter to try again
   };
 
   const renderDateSelector = () => {
@@ -227,6 +271,14 @@ const BookingCalendar = ({ onBookingComplete, customerDetails }) => {
       </div>
     );
   };
+
+  // Always use mock data in development mode
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && calendarError) {
+      console.log('Development mode: clearing calendar error and using mock data');
+      setCalendarError(null);
+    }
+  }, [calendarError]);
 
   if (calendarError) {
     return (

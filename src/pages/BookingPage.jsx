@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import BookingCalendar from '../components/booking/BookingCalendar';
 import ContactForm from '../components/ui/ContactForm';
+import EmbeddedCalendar from '../components/booking/EmbeddedCalendar';
 
 const BookingPage = () => {
   const navigate = useNavigate();
@@ -20,14 +20,6 @@ const BookingPage = () => {
     setCustomerDetails(formData);
     setStep(2);
     window.scrollTo(0, 0);
-  };
-  
-  const handleBookingComplete = (bookingDetails) => {
-    // You could store booking details in localStorage or context
-    // for reference on a confirmation page
-    setTimeout(() => {
-      navigate('/booking-confirmation');
-    }, 3000);
   };
   
   return (
@@ -131,10 +123,7 @@ const BookingPage = () => {
                     </p>
                   </motion.div>
                   
-                  <BookingCalendar 
-                    customerDetails={customerDetails}
-                    onBookingComplete={handleBookingComplete}
-                  />
+                  <EmbeddedCalendar />
                 </div>
               )}
             </div>
@@ -202,7 +191,7 @@ const BookingPage = () => {
               >
                 <h3 className="text-xl font-serif font-medium mb-3">Can I reschedule my appointment?</h3>
                 <p className="text-secondary-600">
-                  Yes, you can reschedule your appointment up to 24 hours before the scheduled time. Simply contact us via email or phone, and we'll help you find a new time slot.
+                  Yes, you can reschedule your appointment up to 24 hours before the scheduled time. Simply contact us via email or phone, or use the rescheduling link in your confirmation email.
                 </p>
               </motion.div>
             </div>

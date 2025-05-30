@@ -1,47 +1,39 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import Header from './components/layout/Header'
-import Footer from './components/layout/Footer'
-import Home from './pages/HomePage'
-import About from './pages/AboutPage'
-import Services from './pages/ServicesPage'
-import Contact from './pages/ContactPage'
-import Booking from './pages/BookingPage'
-import Settings from './pages/Settings'
-import NotFound from './pages/NotFoundPage'
-import ProcessPage from './pages/ProcessPage'
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ProcessPage from './pages/ProcessPage';
+import ResourcesPage from './pages/ResourcesPage';
+import ContactPage from './pages/ContactPage';
+import BookingPage from './pages/BookingPage';
+import BookingConfirmationPage from './pages/BookingConfirmationPage';
+import NotFoundPage from './pages/NotFoundPage';
+import ScrollToTop from './components/utils/ScrollToTop';
+import './App.css';
 
 function App() {
-  const location = useLocation()
-  
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
-  
-  // Log current route for debugging
-  useEffect(() => {
-    console.log('Current route:', location.pathname)
-  }, [location.pathname])
-  
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
+      <ScrollToTop />
       <Header />
-      <main className="flex-grow">
+      <main className="min-h-screen pt-20">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
           <Route path="/process" element={<ProcessPage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
-    </div>
-  )
+    </>
+  );
 }
 
-export default App
+export default App;
