@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import BookingButton from '../booking/BookingButton'
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-36 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-600 overflow-hidden">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-36 bg-gradient-to-br from-primary-800 via-primary-800 to-primary-800 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -42,10 +43,11 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
           >
-            <Link to="/contact" className="btn-accent">
-              Book a Consultation
-            </Link>
-            <Link to="/services" className="btn bg-transparent text-white border border-white hover:bg-primary-600 focus:ring-white">
+            <BookingButton 
+              text="Book a Consultation"
+              className="btn-accent"
+            />
+            <Link to="/services" className="btn bg-transparent text-white border border-white hover:bg-primary-700 focus:ring-white">
               Explore Services
             </Link>
           </motion.div>

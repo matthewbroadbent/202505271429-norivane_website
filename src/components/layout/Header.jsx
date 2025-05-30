@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import Logo from '../ui/Logo'
+import BookingButton from '../booking/BookingButton'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,7 +32,7 @@ const Header = () => {
   }, [location])
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-elegant py-3' : 'bg-primary-500 py-5'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-elegant py-3' : 'bg-primary-700 py-5'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
           <Logo variant={isScrolled ? 'dark' : 'light'} />
@@ -53,9 +54,10 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Link to="/contact" className="btn-accent">
-              Book a Consultation
-            </Link>
+            <BookingButton 
+              text="Book a Consultation"
+              className={`btn ${isScrolled ? 'btn-accent' : 'bg-accent-500 text-white hover:bg-accent-600'}`}
+            />
           </nav>
           
           {/* Mobile Navigation Toggle */}
@@ -92,9 +94,11 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Link to="/contact" className="btn-accent w-full text-center mt-4">
-                Book a Consultation
-              </Link>
+              <BookingButton 
+                text="Book a Consultation"
+                className="btn-accent w-full text-center mt-4"
+                fullWidth={true}
+              />
             </nav>
           </div>
         </motion.div>

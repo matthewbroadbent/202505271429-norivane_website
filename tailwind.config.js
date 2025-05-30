@@ -6,18 +6,22 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+        serif: ['Montserrat', 'serif'],
+      },
       colors: {
         primary: {
-          50: '#e6eaef',
-          100: '#ccd5df',
-          200: '#99abBF',
-          300: '#66819F',
-          400: '#33577F',
-          500: '#0A2342', // Deep Blue (main brand color)
-          600: '#091c36',
-          700: '#07152a',
-          800: '#050e1d',
-          900: '#020711',
+          50: '#e6edf5',
+          100: '#ccdaeb',
+          200: '#99b5d7',
+          300: '#6690c3',
+          400: '#336baf',
+          500: '#00469b',
+          600: '#0b3a7c',
+          700: '#0b2242', // Header color
+          800: '#0a2342', // Deep Blue (primary brand color)
+          900: '#091d38',
         },
         secondary: {
           50: '#f8fafc',
@@ -30,28 +34,19 @@ export default {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
-          950: '#020617',
         },
         accent: {
-          50: '#e6f8f7',
-          100: '#ccf1ef',
-          200: '#99e3df',
-          300: '#66d5cf',
-          400: '#33c7bf',
-          500: '#00B2A9', // Sharp Teal (accent color)
+          50: '#e6f9f8',
+          100: '#ccf3f1',
+          200: '#99e7e3',
+          300: '#66dbd5',
+          400: '#33cfc7',
+          500: '#00B2A9', // Teal accent color
           600: '#008e87',
           700: '#006b65',
           800: '#004743',
           900: '#002422',
         },
-      },
-      fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-        serif: ['Montserrat', 'sans-serif'], // Changed to Montserrat
-      },
-      boxShadow: {
-        'elegant': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
-        'elegant-lg': '0 20px 40px -5px rgba(0, 0, 0, 0.1)',
       },
     },
   },

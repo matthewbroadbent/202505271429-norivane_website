@@ -1,50 +1,48 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import BookingButton from '../booking/BookingButton'
 
-const CTASection = ({ 
-  title = "Ready to maximize your business sale value?",
-  subtitle = "Book a confidential consultation to discuss your exit strategy.",
-  primaryButtonText = "Book a Consultation",
-  primaryButtonLink = "/contact",
-  secondaryButtonText = "Learn More",
-  secondaryButtonLink = "/services",
-  showSecondaryButton = true,
-  bgColor = "bg-primary-900"
-}) => {
+const CTASection = () => {
   return (
-    <section className={`py-16 md:py-20 ${bgColor}`}>
+    <section className="py-16 md:py-24 bg-primary-800">
       <div className="container-custom">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto"
-        >
-          <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-white">
-            {title}
-          </h2>
-          <p className="text-lg md:text-xl text-primary-100 mb-8">
-            {subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link 
-              to={primaryButtonLink} 
-              className="btn bg-white text-primary-800 hover:bg-primary-50 focus:ring-white"
-            >
-              {primaryButtonText}
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-sans font-medium text-white mb-6"
+          >
+            Ready to Maximize Your Business Exit Value?
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-xl text-primary-100 mb-8"
+          >
+            Schedule a consultation to discuss your exit strategy and how we can help you achieve the best possible outcome.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <BookingButton 
+              text="Book a Consultation"
+              className="btn-accent"
+            />
+            <Link to="/contact" className="btn bg-transparent text-white border border-white hover:bg-primary-700 focus:ring-white">
+              Contact Us
             </Link>
-            
-            {showSecondaryButton && (
-              <Link 
-                to={secondaryButtonLink} 
-                className="btn bg-transparent text-white border border-white hover:bg-primary-800 focus:ring-white"
-              >
-                {secondaryButtonText}
-              </Link>
-            )}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

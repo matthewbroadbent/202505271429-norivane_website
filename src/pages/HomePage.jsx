@@ -1,19 +1,13 @@
 import { useEffect } from 'react'
 import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
 import Hero from '../components/sections/Hero'
-import About from '../components/sections/About'
-import Services from '../components/sections/Services'
-import Process from '../components/sections/Process'
-import Stats from '../components/sections/Stats'
-import Testimonials from '../components/sections/Testimonials'
-import FAQ from '../components/sections/FAQ'
 import CTASection from '../components/ui/CTASection'
+import Footer from '../components/layout/Footer'
 
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'Norivane | CEO Exit Strategy Coaching'
+    document.title = 'Norivane | Expert Business Exit Strategy Consultants'
   }, [])
   
   return (
@@ -21,12 +15,9 @@ const HomePage = () => {
       <Header />
       <main>
         <Hero />
-        <About />
-        <Services />
-        <Stats />
-        <Process />
-        <Testimonials />
-        <FAQ />
+        
+        {/* Other sections would go here */}
+        
         <CTASection />
       </main>
       <Footer />
