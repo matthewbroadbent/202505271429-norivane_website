@@ -53,7 +53,7 @@ const HomePage = () => {
       {/* Innovative Split-Screen Hero with 3D Depth and Dynamic Elements */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen overflow-hidden pt-24 md:pt-0" // Added padding-top to prevent header overlap
+        className="relative min-h-[120vh] overflow-hidden pt-24 md:pt-0" // Increased height to min-h-[120vh]
       >
         {/* Left Panel - Deep Blue Gradient Background */}
         <div className="absolute inset-y-0 left-0 w-full lg:w-7/12 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700">
@@ -152,7 +152,7 @@ const HomePage = () => {
         </div>
         
         {/* Content Container with 3D Perspective */}
-        <div className="relative z-40 container-custom mx-auto h-screen flex flex-col justify-center px-6 lg:px-0">
+        <div className="relative z-40 container-custom mx-auto min-h-[120vh] flex flex-col justify-center px-6 lg:px-0">
           <div className="lg:w-1/2 pt-20 md:pt-0">
             {/* Premium Badge - Target Market Specification */}
             <motion.div
@@ -161,9 +161,9 @@ const HomePage = () => {
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent-500/20 backdrop-blur-sm border border-accent-400/30 text-white text-sm font-medium">
                 <span className="mr-2 text-accent-400">✦</span>
-                For Business Owners with £1m-£20m Annual Turnover
+                For Business Owners with £1m-£20m Turnover Looking to Sell
                 <span className="ml-2 text-accent-400">✦</span>
               </div>
             </motion.div>
@@ -222,6 +222,19 @@ const HomePage = () => {
               className="h-1 w-24 bg-accent-400 mb-8 rounded-full"
             />
             
+            {/* Target Market Clarification - ENHANCED */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="mb-8 bg-accent-500/10 backdrop-blur-sm border border-accent-400/20 rounded-lg p-5"
+            >
+              <h2 className="text-xl text-accent-300 font-medium mb-2">Selling Your £1M-£20M Turnover Business?</h2>
+              <p className="text-white/90">
+                We specialise exclusively in helping owners of established businesses with <span className="font-semibold text-white">£1m-£20m turnover</span> maximise their exit value when <span className="font-semibold text-white">selling their business</span>.
+              </p>
+            </motion.div>
+            
             {/* Premium Subheading with Reveal Animation */}
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -229,7 +242,7 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 1 }}
               className="text-xl text-white/90 mb-10 max-w-xl leading-relaxed"
             >
-              Maximise your business value and secure your financial future with our expert coaching. We guide established business owners through strategic exits that protect your legacy.
+              Our expert coaching guides you through the entire business sale process, from strategic planning to successful exit, ensuring you achieve maximum value when selling your company.
             </motion.p>
             
             {/* Premium Button Group with 3D Hover Effects */}
