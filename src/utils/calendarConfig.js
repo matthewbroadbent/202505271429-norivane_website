@@ -1,7 +1,7 @@
 // Google Calendar API configuration
 export const calendarConfig = {
-  clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '35768330791-auratvupj2964objclvjgcbqr4324e49.apps.googleusercontent.com',
-  apiKey: import.meta.env.VITE_GOOGLE_API_KEY || 'AIzaSyDJwlIU_cXD-sLVSKJ8-MHJJUCQiLqXnbQ',
+  clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '',
+  apiKey: import.meta.env.VITE_GOOGLE_API_KEY || '',
   scope: "https://www.googleapis.com/auth/calendar",
   discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
   calendarId: import.meta.env.VITE_CALENDAR_ID || 'primary',

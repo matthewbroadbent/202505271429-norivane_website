@@ -86,7 +86,7 @@ class GoogleCalendarService {
           window.gapi.load('client', async () => {
             try {
               clearTimeout(gapiTimeout);
-              console.log('Initializing Google API client with API key:', calendarConfig.apiKey.substring(0, 5) + '...');
+              console.log('Initializing Google API client with API key');
               
               await window.gapi.client.init({
                 apiKey: calendarConfig.apiKey,

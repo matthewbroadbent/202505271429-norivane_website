@@ -11,7 +11,7 @@ const BUSINESS_HOURS_END = 18; // 6 PM
 
 // Google API configuration
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY || '';
-const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '35768330791-auratvupj2964objclvjgcbqr4324e49.apps.googleusercontent.com';
+const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 const SCOPES = "https://www.googleapis.com/auth/calendar";
 
