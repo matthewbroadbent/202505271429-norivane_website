@@ -9,7 +9,7 @@ const Hero = () => {
   }
   
   return (
-    <section className="relative bg-gradient-to-br from-primary-600 to-primary-800 text-white pt-20 md:pt-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-primary-600 to-primary-800 text-white pt-32 md:pt-40 overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center pb-20 md:pb-32">
           <motion.div
@@ -18,25 +18,32 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="order-2 md:order-1"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Strategic Exit Planning for Visionary CEOs
-            </h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-lg">
-              Transform your business legacy with our expert coaching. We guide CEOs through strategic exits that maximize value and secure your future.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={handleGetStarted}
-                className="btn-accent text-lg px-8 py-3"
-              >
-                Book a Consultation
-              </button>
-              <button 
-                onClick={() => navigate('/services')}
-                className="btn-outline-light text-lg px-8 py-3"
-              >
-                Explore Services
-              </button>
+            <div className="pt-4">
+              <div className="inline-block bg-primary-700/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-primary-400/30 mb-6">
+                <p className="text-sm md:text-base font-medium text-primary-100">
+                  For Business Owners with £1m-£20m Turnover Looking to Sell
+                </p>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Strategic Exit Planning for Visionary CEOs
+              </h1>
+              <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-lg">
+                Transform your business legacy with our expert coaching. We guide CEOs through strategic exits that maximize value and secure your future.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={handleGetStarted}
+                  className="btn-accent text-lg px-8 py-3"
+                >
+                  Book a Consultation
+                </button>
+                <button 
+                  onClick={() => navigate('/services')}
+                  className="btn-outline-light text-lg px-8 py-3"
+                >
+                  Explore Services
+                </button>
+              </div>
             </div>
           </motion.div>
           
