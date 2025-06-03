@@ -14,7 +14,7 @@ const Services = () => {
     {
       id: 'valuation',
       title: 'Business Valuation',
-      description: `Receive an accurate, market-based valuation of your business using multiple methodologies. We identify value drivers and areas for improvement to increase your company's worth before sale.`,
+      description: `Receive an accurate, market-based professional and independent valuation of your business using multiple methodologies. We identify value drivers and areas for improvement to increase your company's worth before sale.`,
       icon: FiBarChart2,
       link: '/services#valuation',
     },

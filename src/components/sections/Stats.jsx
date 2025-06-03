@@ -15,7 +15,7 @@ const Stats = () => {
       description: 'Our highest value transaction successfully completed',
     },
     {
-      value: '45+',
+      value: '25+',
       label: 'Businesses Sold',
       description: 'Successfully guided exits across multiple industries',
     },

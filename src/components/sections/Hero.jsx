@@ -163,7 +163,7 @@ const Hero = () => {
                 <span className="block">Strategic Exit</span>
                 <span className="block">Planning for</span>
                 <span className="relative">
-                  Visionary CEOs
+                  Visionary MDs and CEOs
                   <motion.span 
                     className="absolute -bottom-3 left-0 h-1 bg-[#00b4d8]"
                     initial={{ width: 0 }}
@@ -180,7 +180,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-lg md:text-xl text-[#caf0f8] mb-8 max-w-lg"
               >
-                Transform your business legacy with our expert coaching. We guide CEOs through strategic exits that maximize value and secure your future.
+                Transform your business legacy with our expert coaching. We guide MDs and CEOs through strategic exits that maximise value and secure your future.
               </motion.p>
               
               {/* Buttons */}
@@ -225,8 +225,8 @@ const Hero = () => {
               >
                 {[
                   { value: "£250M+", label: "Exit Value" },
-                  { value: "97%", label: "Success Rate" },
-                  { value: "15+ Years", label: "Experience" }
+                  { value: "92%", label: "Success Rate" },
+                  { value: "30+ Years", label: "Experience" }
                 ].map((stat, index) => (
                   <motion.div 
                     key={index}
@@ -274,7 +274,7 @@ const Hero = () => {
                     }}
                   >
                     <div className="text-sm font-medium">Expert-Led Strategy</div>
-                    <div className="text-xs text-[#90e0ef]">Personalized Exit Plans</div>
+                    <div className="text-xs text-[#90e0ef]">Personalised Exit Plans</div>
                   </motion.div>
                   
                   {/* Floating badge 2 */}
@@ -288,7 +288,7 @@ const Hero = () => {
                       y: mousePosition.y * 15,
                     }}
                   >
-                    <div className="text-sm font-medium">Maximize Value</div>
+                    <div className="text-sm font-medium">Maximise Value</div>
                     <div className="text-xs text-white/80">Proven Methodology</div>
                   </motion.div>
                 </div>

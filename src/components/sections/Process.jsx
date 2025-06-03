@@ -10,13 +10,13 @@ const Process = () => {
     },
     {
       number: 2,
-      title: 'Value Optimization',
+      title: 'Value Optimisation',
       description: 'Based on our assessment, we identify specific opportunities to increase your business value before going to market, focusing on quick wins and strategic improvements.',
     },
     {
       number: 3,
       title: 'Exit Strategy Development',
-      description: 'We create a customized exit plan aligned with your timeline and goals, including valuation targets, potential buyer profiles, and deal structure preferences.',
+      description: 'We create a customised exit plan aligned with your timeline and goals, including valuation targets, potential buyer profiles, and deal structure preferences.',
     },
     {
       number: 4,
@@ -26,12 +26,12 @@ const Process = () => {
     {
       number: 5,
       title: 'Negotiation & Deal Structuring',
-      description: 'We guide you through the negotiation process, helping structure a deal that maximizes upfront value while protecting your interests in earnouts and contingent payments.',
+      description: 'We guide you through the negotiation process, helping structure a deal that maximises upfront value while protecting your interests in earnouts and contingent payments.',
     },
     {
       number: 6,
       title: 'Transition Support',
-      description: 'After the sale, we provide guidance on leadership transition, team retention, and your personal next steps to ensure a smooth handover and successful post-exit life.',
+      description: 'We provide guidance on leadership transition, team retention, and your personal next steps to ensure a smooth handover and successful post-exit life.',
     },
   ]
   
@@ -40,7 +40,7 @@ const Process = () => {
       <div className="container-custom">
         <SectionHeading
           title="Our Proven Exit Process"
-          subtitle="A structured approach to maximize your business value and ensure a successful transition"
+          subtitle="A structured approach to maximise your business value and ensure a successful transition"
           align="center"
         />
         
