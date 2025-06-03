@@ -22,7 +22,7 @@ const Footer = () => {
       { name: 'Post-Sale Transition', href: '/services#transition' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Privacy Policy', href: 'https://docs.google.com/document/d/1U1zEPY6jwMfgGnjRMaBt2KGxjNY7mAraPHgAyQVgjlY/edit?usp=sharing' },
       { name: 'Terms of Service', href: '/terms' },
       { name: 'Cookie Policy', href: '/cookies' },
     ],
@@ -92,16 +92,16 @@ const Footer = () => {
             <ul className="space-y-3 text-secondary-300">
               <li>
                 <a href="mailto:contact@norivane.com" className="hover:text-white transition-colors duration-200">
-                  contact@norivane.com
+                  us@norivane.com
                 </a>
               </li>
               <li>
-                <a href="tel:+441234567890" className="hover:text-white transition-colors duration-200">
-                  +44 (0) 123 456 7890
+                <a href="tel:+447356224125" className="hover:text-white transition-colors duration-200">
+                  +44 (0) 7356 224 125
                 </a>
               </li>
-              <li>123 Business Street</li>
-              <li>London, UK</li>
+              <li></li>
+              <li></li>
             </ul>
             <button 
               onClick={handleBookConsultation}
@@ -114,7 +114,7 @@ const Footer = () => {
         
         <div className="pt-8 mt-8 border-t border-secondary-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-secondary-400 text-sm">
-            &copy; {currentYear} Norivane. All rights reserved.
+            &copy; {currentYear} Norivane Ltd. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0">
             <ul className="flex space-x-6 text-sm text-secondary-400">
