@@ -21,7 +21,7 @@ const AboutPage = () => {
       icon: "🤝"
     },
     {
-      title: "Client-Centered",
+      title: "Client-Centred",
       description: "Your goals and vision drive our approach. We tailor our strategies to your specific situation and desired outcomes.",
       icon: "👥"
     },
@@ -91,7 +91,7 @@ const AboutPage = () => {
                 className="space-y-6 text-secondary-700"
               >
                 <p>
-                  Norivane was founded in 2010 after witnessing too many business owners leave millions on the table during their exit. Our founder, having sold his own technology company, recognized that most CEOs approach their exit without adequate preparation or strategic guidance.
+                  Norivane was founded in 2014 after witnessing too many business owners leave millions on the table during their exit. Our founder, having sold his own technology company, recognized that most CEOs approach their exit without adequate preparation or strategic guidance.
                 </p>
                 
                 <p>
@@ -139,79 +139,56 @@ const AboutPage = () => {
         </div>
       </section>
       
-      {/* Team Section */}
+      {/* Matthew Broadbent Section */}
       <section className="section">
         <div className="container-custom">
           <SectionHeading
-            title="Our Leadership Team"
-            subtitle="Experienced professionals dedicated to your success"
+            title="Meet Matthew Broadbent"
+            subtitle="Director and Coach"
             align="center"
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {/* Team Member 1 */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-12">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-elegant overflow-hidden"
+              className="order-2 lg:order-1"
             >
-              <img 
-                src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Jonathan Reynolds" 
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-medium mb-1">Jonathan Reynolds</h3>
-                <p className="text-primary-700 mb-4">Founder & CEO</p>
-                <p className="text-secondary-600 mb-4">
-                  Former tech CEO with 20+ years of experience in scaling and selling businesses. Has personally guided 25+ successful exits.
+              <div className="space-y-6 text-secondary-700">
+                <p className="text-lg italic font-serif text-primary-700">
+                  "There's a common theme running between start-up, scale up and business exit. That theme is valuation. And having the skill to enhance that valuation is a gift that will keep on giving. Investors will flock to invest in your start-up. Applications for funding will pass through funding committees without question. Buyers will fight to buy your business because a business that is attractive to investors and other funders is also a business that's ready for buyers to acquire and add to their portfolios."
+                </p>
+                
+                <div className="pt-4 pb-6">
+                  <h3 className="text-xl font-serif font-semibold text-primary-900">
+                    Matthew Broadbent
+                  </h3>
+                  <p className="text-primary-700 font-medium">
+                    DIRECTOR AND COACH
+                  </p>
+                </div>
+                
+                <p>
+                  Deloitte trained Chartered Accountant with 3 decades of transactions under his belt, he has started up, bought, scaled, sold and invested in small and medium sized businesses over a career span as managing director, finance director and fund manager (when investing other people's money). Protecting you from the scares.
                 </p>
               </div>
             </motion.div>
             
-            {/* Team Member 2 */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-elegant overflow-hidden"
+              transition={{ duration: 0.5 }}
+              className="order-1 lg:order-2"
             >
-              <img 
-                src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Alexandra Chen" 
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-medium mb-1">Alexandra Chen</h3>
-                <p className="text-primary-700 mb-4">Head of Strategy</p>
-                <p className="text-secondary-600 mb-4">
-                  Former M&A advisor with experience in transactions totaling over £500M. Specializes in value optimization strategies.
-                </p>
-              </div>
-            </motion.div>
-            
-            {/* Team Member 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-elegant overflow-hidden"
-            >
-              <img 
-                src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Michael Okonjo" 
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-medium mb-1">Michael Okonjo</h3>
-                <p className="text-primary-700 mb-4">Financial Director</p>
-                <p className="text-secondary-600 mb-4">
-                  Certified valuation expert with background in private equity. Leads our business valuation and financial optimization processes.
-                </p>
+              <div className="max-w-md mx-auto mb-8">
+                <img 
+                  src="https://i.ibb.co/S43tc1Qn/IMG-7216.jpg" 
+                  alt="Matthew Broadbent - Director and Coach" 
+                  className="rounded-lg shadow-elegant-lg w-full h-auto object-cover"
+                />
               </div>
             </motion.div>
           </div>
@@ -226,6 +203,7 @@ const AboutPage = () => {
             subtitle="A methodology refined through dozens of successful exits"
             align="center"
             theme="light"
+            className="text-white"
           />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -238,7 +216,7 @@ const AboutPage = () => {
             >
               <div className="text-4xl mb-4">🔍</div>
               <h3 className="text-xl font-serif font-medium mb-3">Holistic Assessment</h3>
-              <p className="text-primary-100">
+              <p className="text-white">
                 We begin by understanding your business from every angle—financial performance, operational efficiency, market position, team strength, and growth potential.
               </p>
             </motion.div>
@@ -251,8 +229,8 @@ const AboutPage = () => {
               className="bg-primary-800 rounded-lg p-6 md:p-8"
             >
               <div className="text-4xl mb-4">📈</div>
-              <h3 className="text-xl font-serif font-medium mb-3">Value Optimization</h3>
-              <p className="text-primary-100">
+              <h3 className="text-xl font-serif font-medium mb-3">Value Optimisation</h3>
+              <p className="text-white">
                 We identify and implement strategic improvements that can significantly increase your business value before going to market.
               </p>
             </motion.div>
@@ -266,7 +244,7 @@ const AboutPage = () => {
             >
               <div className="text-4xl mb-4">🤝</div>
               <h3 className="text-xl font-serif font-medium mb-3">Strategic Matching</h3>
-              <p className="text-primary-100">
+              <p className="text-white">
                 Rather than a broad auction approach, we identify and approach specific buyers who are strategically aligned with your business and capable of paying a premium.
               </p>
             </motion.div>
@@ -276,7 +254,7 @@ const AboutPage = () => {
       
       <CTASection 
         title="Ready to discuss your exit strategy?"
-        subtitle="Book a confidential consultation to explore how we can help maximize your business sale value."
+        subtitle="Book a confidential consultation to explore how we can help maximise your business sale value."
       />
     </main>
   )

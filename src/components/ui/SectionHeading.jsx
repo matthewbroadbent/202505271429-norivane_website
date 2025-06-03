@@ -1,28 +1,31 @@
 import { motion } from 'framer-motion'
 
-const SectionHeading = ({ title, subtitle, align = 'center', darkBackground = false }) => {
+const SectionHeading = ({ title, subtitle, align = 'center', theme = 'dark', className = '' }) => {
   const alignmentClasses = {
-    center: 'text-center mx-auto',
+    center: 'text-center',
     left: 'text-left',
-    right: 'text-right ml-auto',
+    right: 'text-right'
   }
-  
-  const textColorClasses = darkBackground 
-    ? 'text-white' // Light text for dark backgrounds
-    : 'text-secondary-900' // Dark text for light backgrounds
-    
-  const subtitleColorClasses = darkBackground
-    ? 'text-gray-200' // Light muted text for dark backgrounds
-    : 'text-secondary-600' // Dark muted text for light backgrounds
-  
+
+  const themeClasses = {
+    dark: {
+      title: 'text-primary-900',
+      subtitle: 'text-secondary-600'
+    },
+    light: {
+      title: 'text-white',
+      subtitle: 'text-primary-100'
+    }
+  }
+
   return (
-    <div className={`max-w-3xl ${alignmentClasses[align]}`}>
+    <div className={`${alignmentClasses[align]} ${className}`}>
       <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${textColorClasses}`}
+        className={`text-3xl md:text-4xl font-serif font-semibold mb-4 ${themeClasses[theme].title}`}
       >
         {title}
       </motion.h2>
@@ -33,7 +36,7 @@ const SectionHeading = ({ title, subtitle, align = 'center', darkBackground = fa
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className={`text-lg md:text-xl ${subtitleColorClasses} mb-10 md:mb-16`}
+          className={`text-lg md:text-xl max-w-3xl mx-auto ${themeClasses[theme].subtitle}`}
         >
           {subtitle}
         </motion.p>

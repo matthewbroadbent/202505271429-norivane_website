@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const CTASection = ({ 
-  title = "Ready to maximize your business sale value?",
+  title = "Ready to maximise your business sale value?",
   subtitle = "Book a confidential consultation to discuss your exit strategy.",
   primaryButtonText = "Book a Consultation",
   primaryButtonLink = "/booking",
