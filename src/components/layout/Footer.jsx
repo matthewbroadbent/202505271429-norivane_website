@@ -29,8 +29,8 @@ const Footer = () => {
     social: [
       { name: 'LinkedIn', icon: FiLinkedin, href: '#' },
       { name: 'Twitter', icon: FiTwitter, href: '#' },
-      { name: 'Email', icon: FiMail, href: 'mailto:contact@norivane.com' },
-      { name: 'Phone', icon: FiPhone, href: 'tel:+441234567890' },
+      { name: 'Email', icon: FiMail, href: 'mailto:us@norivane.com' },
+      { name: 'Phone', icon: FiPhone, href: 'tel:+447356224125' },
     ],
   }
   
