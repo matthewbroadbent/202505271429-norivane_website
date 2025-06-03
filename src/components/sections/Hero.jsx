@@ -1,103 +1,425 @@
-import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 const Hero = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const heroRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollY } = useScroll();
   
-  const handleGetStarted = () => {
-    navigate('/booking')
-  }
+  // Parallax effects
+  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  
+  // Handle mouse movement for interactive elements
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      setMousePosition({
+        x: clientX / innerWidth - 0.5,
+        y: clientY / innerHeight - 0.5
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
   
   return (
-    <section className="relative bg-gradient-to-br from-primary-600 to-primary-800 text-white pt-32 md:pt-40 overflow-hidden">
-      <div className="container-custom relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center pb-20 md:pb-32">
+    <div className="relative" ref={heroRef}>
+      {/* Main Hero Section - Increased height */}
+      <section className="relative bg-[#001233] pt-32 pb-48 md:pt-40 md:pb-64 lg:pt-48 lg:pb-80 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#001233] via-[#001845] to-[#023e8a] opacity-90"></div>
+          
+          {/* Background image with overlay */}
+          <div className="absolute inset-0 opacity-20">
+            <img 
+              src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+              alt="" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          {/* Animated dots */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '30px 30px'
+          }}></div>
+          
+          {/* Animated floating elements */}
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#0077b6]/20 blur-[100px]"
+            animate={{
+              x: mousePosition.x * -30,
+              y: mousePosition.y * -30,
+            }}
+            transition={{ type: "spring", damping: 15 }}
+          ></motion.div>
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#00b4d8]/10 blur-[80px]"
+            animate={{
+              x: mousePosition.x * 30,
+              y: mousePosition.y * 30,
+            }}
+            transition={{ type: "spring", damping: 15 }}
+          ></motion.div>
+          
+          {/* Animated lines */}
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <motion.path
+              d="M0,100 Q400,150 800,100 T1600,100"
+              fill="none"
+              stroke="rgba(0, 180, 216, 0.1)"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M0,200 Q400,250 800,200 T1600,200"
+              fill="none"
+              stroke="rgba(0, 180, 216, 0.07)"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 2.5, ease: "easeInOut", delay: 0.2 }}
+            />
+            <motion.path
+              d="M0,300 Q400,350 800,300 T1600,300"
+              fill="none"
+              stroke="rgba(0, 180, 216, 0.05)"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3, ease: "easeInOut", delay: 0.4 }}
+            />
+          </svg>
+          
+          {/* Floating geometric shapes */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="order-2 md:order-1"
-          >
-            <div className="pt-4">
-              <div className="inline-block bg-primary-700/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-primary-400/30 mb-6">
-                <p className="text-sm md:text-base font-medium text-primary-100">
-                  For Business Owners with £1m-£20m Turnover Looking to Sell
-                </p>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Strategic Exit Planning for Visionary CEOs
-              </h1>
-              <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-lg">
+            className="absolute top-1/3 right-1/4 w-16 h-16 border-2 border-[#00b4d8]/30 rounded-lg"
+            animate={{ 
+              rotate: 360,
+              y: [0, -20, 0],
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute bottom-1/3 left-1/5 w-12 h-12 border-2 border-[#00b4d8]/20 rounded-full"
+            animate={{ 
+              rotate: -360,
+              x: [0, 20, 0],
+            }}
+            transition={{ 
+              rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+              x: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute top-2/3 right-1/3 w-20 h-20 border border-[#90e0ef]/10"
+            style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.1, 1],
+            }}
+            transition={{ 
+              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
+          ></motion.div>
+        </div>
+        
+        {/* Content Container */}
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center px-4 py-2 rounded-full bg-[#00b4d8]/20 border border-[#00b4d8]/30 mb-8"
+              >
+                <span className="text-[#90e0ef] text-sm font-medium">For Business Owners with £1m-£20m Turnover</span>
+              </motion.div>
+              
+              {/* Heading */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
+              >
+                <span className="block">Strategic Exit</span>
+                <span className="block">Planning for</span>
+                <span className="relative">
+                  Visionary CEOs
+                  <motion.span 
+                    className="absolute -bottom-3 left-0 h-1 bg-[#00b4d8]"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 1, delay: 1 }}
+                  ></motion.span>
+                </span>
+              </motion.h1>
+              
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg md:text-xl text-[#caf0f8] mb-8 max-w-lg"
+              >
                 Transform your business legacy with our expert coaching. We guide CEOs through strategic exits that maximize value and secure your future.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              </motion.p>
+              
+              {/* Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
                 <button 
-                  onClick={handleGetStarted}
-                  className="btn-accent text-lg px-8 py-3"
+                  onClick={() => navigate('/booking')}
+                  className="group relative px-8 py-4 bg-[#00b4d8] hover:bg-[#0096c7] text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-[#00b4d8]/30 overflow-hidden"
                 >
-                  Book a Consultation
+                  <span className="relative z-10">Book a Consultation</span>
+                  <motion.span 
+                    className="absolute inset-0 bg-[#0077b6] z-0"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  ></motion.span>
                 </button>
                 <button 
                   onClick={() => navigate('/services')}
-                  className="btn-outline-light text-lg px-8 py-3"
+                  className="group relative px-8 py-4 bg-transparent border border-[#0077b6] text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                 >
-                  Explore Services
+                  <span className="relative z-10">Explore Services</span>
+                  <motion.span 
+                    className="absolute inset-0 bg-[#0077b6]/20 z-0"
+                    initial={{ y: "100%" }}
+                    whileHover={{ y: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  ></motion.span>
                 </button>
-              </div>
+              </motion.div>
+              
+              {/* Stats */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-[#0077b6]/30"
+              >
+                {[
+                  { value: "£250M+", label: "Exit Value" },
+                  { value: "97%", label: "Success Rate" },
+                  { value: "15+ Years", label: "Experience" }
+                ].map((stat, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="text-[#00b4d8] text-2xl md:text-3xl font-bold mb-1">{stat.value}</div>
+                    <div className="text-[#caf0f8]/80 text-sm">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="order-1 md:order-2"
-          >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-white/10 rounded-full blur-xl"></div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl relative">
-                <img 
-                  src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                  alt="CEO Strategy Session" 
-                  className="w-full h-auto rounded-xl shadow-lg"
-                />
+            
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              style={{ y: y1 }}
+              className="hidden md:block"
+            >
+              <div className="relative">
+                {/* Glow behind image */}
+                <div className="absolute -inset-4 bg-[#00b4d8]/10 rounded-full blur-xl"></div>
+                
+                {/* Image container with glass effect */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl relative">
+                  <img 
+                    src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                    alt="CEO Strategy Session" 
+                    className="w-full h-auto rounded-xl shadow-lg"
+                  />
+                  
+                  {/* Floating badge */}
+                  <motion.div
+                    className="absolute -right-8 -bottom-8 bg-[#001845] text-white px-4 py-3 rounded-lg shadow-lg border border-[#0077b6]/30 backdrop-blur-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.5 }}
+                    style={{
+                      x: mousePosition.x * -15,
+                      y: mousePosition.y * -15,
+                    }}
+                  >
+                    <div className="text-sm font-medium">Expert-Led Strategy</div>
+                    <div className="text-xs text-[#90e0ef]">Personalized Exit Plans</div>
+                  </motion.div>
+                  
+                  {/* Floating badge 2 */}
+                  <motion.div
+                    className="absolute -left-8 -top-8 bg-[#00b4d8] text-white px-4 py-3 rounded-lg shadow-lg backdrop-blur-sm"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.5 }}
+                    style={{
+                      x: mousePosition.x * 15,
+                      y: mousePosition.y * 15,
+                    }}
+                  >
+                    <div className="text-sm font-medium">Maximize Value</div>
+                    <div className="text-xs text-white/80">Proven Methodology</div>
+                  </motion.div>
+                </div>
+                
+                {/* Decorative elements */}
+                <motion.div 
+                  className="absolute top-4 left-4 w-12 h-12 rounded-full border-4 border-[#00b4d8]/30"
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    rotate: 360
+                  }}
+                  transition={{ 
+                    scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+                  }}
+                ></motion.div>
+                <motion.div 
+                  className="absolute bottom-10 right-4 w-20 h-1 bg-[#00b4d8]/50 rounded-full"
+                  animate={{ width: [20, 60, 20] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                ></motion.div>
               </div>
+            </motion.div>
+          </div>
+          
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            style={{ opacity }}
+            className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
+            onClick={() => {
+              const aboutSection = document.getElementById('about-section');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            <span className="text-[#caf0f8] text-sm mb-2">Discover Our Expertise</span>
+            <div className="w-6 h-10 border-2 border-[#caf0f8]/30 rounded-full flex justify-center">
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-2 h-2 bg-[#caf0f8] rounded-full mt-2"
+              />
             </div>
           </motion.div>
         </div>
-      </div>
+      </section>
       
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-0 w-64 h-64 bg-primary-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
-      <div className="absolute bottom-40 right-10 w-80 h-80 bg-accent-500 rounded-full filter blur-3xl opacity-10 animate-float" style={{animationDelay: '2s'}}></div>
-      
-      {/* Integrated wave transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 lg:h-64 overflow-hidden leading-none">
+      {/* Wave Transition - Dramatic Curved Implementation */}
+      <div className="relative h-32 md:h-48 bg-white">
+        {/* Main wave */}
         <svg 
-          className="absolute bottom-0 w-full h-full" 
+          className="absolute bottom-full left-0 w-full"
           xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 1200 120" 
+          viewBox="0 0 1440 320"
           preserveAspectRatio="none"
         >
-          <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
-            className="fill-white opacity-10"
-          ></path>
-          <path 
-            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" 
-            className="fill-white opacity-20"
-          ></path>
-          <path 
-            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" 
-            className="fill-white"
-          ></path>
+          <motion.path 
+            initial={{ d: "M0,320L1440,320L1440,320L0,320Z" }}
+            animate={{ d: "M0,320L1440,320L1440,250C1320,290,1200,310,1080,290C960,270,840,210,720,192C600,170,480,190,360,210C240,230,120,250,60,260L0,270Z" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            fill="#ffffff"
+          ></motion.path>
         </svg>
+        
+        {/* Secondary decorative waves */}
+        <svg 
+          className="absolute bottom-full left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <motion.path 
+            initial={{ d: "M0,320L1440,320L1440,320L0,320Z", opacity: 0 }}
+            animate={{ 
+              d: "M0,320L1440,320L1440,280C1320,300,1200,310,1080,300C960,290,840,270,720,260C600,250,480,250,360,260C240,270,120,290,60,300L0,310Z",
+              opacity: 0.1
+            }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
+            fill="#00b4d8"
+          ></motion.path>
+        </svg>
+        
+        <svg 
+          className="absolute bottom-full left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <motion.path 
+            initial={{ d: "M0,320L1440,320L1440,320L0,320Z", opacity: 0 }}
+            animate={{ 
+              d: "M0,320L1440,320L1440,290C1320,300,1200,300,1080,290C960,280,840,260,720,250C600,240,480,240,360,250C240,260,120,280,60,290L0,300Z",
+              opacity: 0.05
+            }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            fill="#0077b6"
+          ></motion.path>
+        </svg>
+        
+        {/* Floating particles in the wave area */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 rounded-full bg-[#00b4d8]/30"
+              initial={{ 
+                x: Math.random() * 100 + "%", 
+                y: "100%", 
+                opacity: 0.3 + Math.random() * 0.7,
+                scale: 0.5 + Math.random() * 1
+              }}
+              animate={{ 
+                y: "0%", 
+                opacity: 0
+              }}
+              transition={{ 
+                duration: 3 + Math.random() * 5, 
+                repeat: Infinity, 
+                ease: "easeOut",
+                delay: Math.random() * 5
+              }}
+            />
+          ))}
+        </div>
       </div>
-      
-      {/* Subtle gradient overlay for smoother transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 to-transparent"></div>
-    </section>
-  )
-}
+    </div>
+  );
+};
 
-export default Hero
+export default Hero;

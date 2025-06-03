@@ -36,7 +36,7 @@ const Header = () => {
   }
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-elegant py-3' : 'bg-primary-500 py-5'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-elegant py-3' : 'bg-primary-500/90 backdrop-blur-sm py-4'}`}>
       <div className="container-custom">
         <div className="flex items-center justify-between">
           <Logo variant={isScrolled ? 'dark' : 'light'} />
@@ -60,7 +60,7 @@ const Header = () => {
             ))}
             <button 
               onClick={handleBookConsultation}
-              className="btn-accent"
+              className={`${isScrolled ? 'btn-accent' : 'bg-white text-primary-600 hover:bg-white/90'} px-4 py-2 rounded-lg font-medium transition-all duration-300`}
             >
               Book a Consultation
             </button>
