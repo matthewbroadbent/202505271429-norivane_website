@@ -163,7 +163,7 @@ const Hero = () => {
                 <span className="block">Strategic Exit</span>
                 <span className="block">Planning for</span>
                 <span className="relative">
-                  Visionary MDs and CEOs
+                  Visionary Business Owners
                   <motion.span 
                     className="absolute -bottom-3 left-0 h-1 bg-[#00b4d8]"
                     initial={{ width: 0 }}

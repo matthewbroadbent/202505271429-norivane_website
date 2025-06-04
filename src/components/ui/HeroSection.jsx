@@ -29,7 +29,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-white mb-8 leading-relaxed"
             >
-              Maximize the value of your business and secure your financial future with our proven exit planning process.
+              Maximise the value of your business and secure your financial future with our proven exit planning process.
             </motion.p>
             
             <motion.div 
