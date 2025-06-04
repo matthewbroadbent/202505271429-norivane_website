@@ -27,7 +27,7 @@ const ProcessPage = () => {
       title: 'Comprehensive Business Assessment',
       description: 'We conduct a thorough evaluation of your business across multiple dimensions to establish a baseline and identify areas for improvement before going to market.',
       details: [
-        'Financial performance analysis and normalization',
+        'Financial performance analysis and normalisation',
         'Operational efficiency review',
         'Market position and competitive landscape assessment',
         'Team structure and dependency evaluation',
@@ -40,7 +40,7 @@ const ProcessPage = () => {
       title: 'Value Enhancement Implementation',
       description: 'Based on our assessment, we implement strategic improvements to increase your business value before approaching potential buyers.',
       details: [
-        'Financial performance optimization',
+        'Financial performance optimisation',
         'Operational efficiency improvements',
         'Customer concentration reduction strategies',
         'Recurring revenue enhancement',
@@ -51,11 +51,11 @@ const ProcessPage = () => {
     {
       number: '04',
       title: 'Exit Strategy Development',
-      description: 'We create a customized exit plan aligned with your timeline and goals, including valuation targets, potential buyer profiles, and deal structure preferences.',
+      description: 'We create a customised exit plan aligned with your timeline and goals, including valuation targets, potential buyer profiles, and deal structure preferences.',
       details: [
         'Valuation range establishment',
         'Exit option analysis (full sale, partial sale, management buyout)',
-        'Tax optimization planning',
+        'Tax optimisation planning',
         'Timeline development with key milestones',
         'Deal structure preferences documentation'
       ],
@@ -77,7 +77,7 @@ const ProcessPage = () => {
     {
       number: '06',
       title: 'Negotiation & Deal Structuring',
-      description: 'We guide you through the negotiation process, helping structure a deal that maximizes upfront value while protecting your interests in earnouts and contingent payments.',
+      description: 'We guide you through the negotiation process, helping structure a deal that maximises upfront value while protecting your interests in earnouts and contingent payments.',
       details: [
         'Initial offer evaluation and response strategy',
         'Term sheet and LOI negotiation',
@@ -134,7 +134,7 @@ const ProcessPage = () => {
         <div className="container-custom">
           <SectionHeading
             title="Our Proven Exit Process"
-            subtitle="A structured approach to maximize your business value and ensure a successful transition"
+            subtitle="A structured step by step approach to maximise your business value and ensure a successful transition"
             align="center"
           />
           
@@ -339,7 +339,7 @@ const ProcessPage = () => {
                   <div className="md:w-1/2 md:pr-12 md:text-right">
                     <h3 className="text-xl font-serif font-medium mb-2">Months 10-12: Closing & Transition</h3>
                     <p className="text-secondary-600">
-                      Finalization of the purchase agreement, closing of the transaction, and implementation of the transition plan.
+                      Finalisation of the purchase agreement, closing of the transaction, and implementation of the transition plan.
                     </p>
                   </div>
                   
