@@ -40,10 +40,10 @@ const ServicesPage = () => {
       description: 'A comprehensive exit strategy tailored to your specific business goals, timeline, and desired outcomes.',
       icon: FiTarget,
       details: [
-        'Personalized exit roadmap development',
+        'Personalised exit roadmap development',
         'Timeline planning and milestone setting',
         'Exit options analysis (full sale, partial sale, management buyout)',
-        'Tax optimization strategies',
+        'Tax optimisation strategies',
         'Personal financial planning integration'
       ],
       image: 'https://images.pexels.com/photos/7681926/pexels-photo-7681926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -79,11 +79,11 @@ const ServicesPage = () => {
     {
       id: 'negotiation',
       title: 'Negotiation Support',
-      description: 'Expert guidance throughout the negotiation process to maximize deal value and structure.',
+      description: 'Expert guidance throughout the negotiation process to maximise deal value and structure.',
       icon: FiMessageSquare,
       details: [
         'Term sheet and LOI review',
-        'Deal structure optimization',
+        'Deal structure optimisation',
         'Earnout and contingent payment structuring',
         'Due diligence preparation and management',
         'Closing process coordination'
@@ -461,7 +461,7 @@ const ServicesPage = () => {
                 className="p-8 border-b md:border-b-0 md:border-r border-secondary-100"
               >
                 <div className="text-3xl font-serif font-bold text-primary-700 mb-4">02</div>
-                <h3 className="text-xl font-serif font-medium mb-3">Optimize</h3>
+                <h3 className="text-xl font-serif font-medium mb-3">Optimise</h3>
                 <p className="text-secondary-600">
                   We implement strategic improvements to increase your business value before approaching potential buyers.
                 </p>
@@ -485,277 +485,77 @@ const ServicesPage = () => {
         </div>
       </section>
       
-      {/* Packages Section */}
+      {/* Value-Based Engagement Section - Added to replace pricing */}
       <section className="section">
         <div className="container-custom">
           <SectionHeading
-            title="Our Service Packages"
-            subtitle="Flexible engagement options tailored to your specific needs"
+            title="Our Engagement Approach"
+            subtitle="We focus on value creation rather than transaction costs"
             align="center"
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {/* Package 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-elegant border border-secondary-100 overflow-hidden"
-            >
-              <div className="p-6 bg-secondary-50 border-b border-secondary-100">
-                <h3 className="text-xl font-serif font-medium text-center">Assessment</h3>
-              </div>
-              <div className="p-6">
-                <div className="text-center mb-6">
-                  <span className="text-3xl font-serif font-bold text-secondary-900">£5,000</span>
-                  <span className="text-secondary-600 ml-2">one-time</span>
-                </div>
-                
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Comprehensive business valuation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Value enhancement opportunities</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Initial exit strategy consultation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Market analysis report</span>
-                  </li>
-                </ul>
-                
-                <a 
-                  href="/contact" 
-                  className="block w-full py-3 px-4 text-center font-medium rounded-md border border-primary-700 text-primary-700 hover:bg-primary-50 transition-colors duration-200"
+          <div className="mt-12 bg-white rounded-lg shadow-elegant-lg p-8 md:p-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <img 
+                  src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                  alt="Business partnership" 
+                  className="rounded-lg shadow-elegant w-full h-auto object-cover"
+                />
+              </motion.div>
+              
+              <div>
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl font-serif font-semibold mb-4"
                 >
-                  Get Started
-                </a>
-              </div>
-            </motion.div>
-            
-            {/* Package 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg shadow-elegant-lg border-2 border-primary-500 overflow-hidden transform md:-translate-y-4 z-10"
-            >
-              <div className="p-6 bg-primary-500 text-white">
-                <h3 className="text-xl font-serif font-medium text-center">Full Exit Support</h3>
-                <div className="text-xs uppercase tracking-wide text-center mt-1 text-primary-100">Most Popular</div>
-              </div>
-              <div className="p-8">
-                <div className="text-center mb-6">
-                  <span className="text-3xl font-serif font-bold text-secondary-900">£25,000</span>
-                  <span className="text-secondary-600 ml-2">+ 1% success fee</span>
-                </div>
+                  Finding the Right Match
+                </motion.h3>
                 
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Everything in Assessment package</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Complete exit strategy development</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Buyer identification and outreach</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Full negotiation support</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Due diligence management</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Transition planning</span>
-                  </li>
-                </ul>
-                
-                <a 
-                  href="/contact" 
-                  className="block w-full py-3 px-4 text-center font-medium rounded-md bg-primary-700 text-white hover:bg-primary-800 transition-colors duration-200"
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="space-y-4 text-secondary-700"
                 >
-                  Get Started
-                </a>
+                  <p>
+                    At Norivane, we believe the most important aspect of our relationship is not the cost, but whether we're the right match for your business exit journey. Our engagement is based on the value we can create together.
+                  </p>
+                  
+                  <p>
+                    We offer flexible engagement options that can be tailored to your specific needs. Whether you join one of our structured programmes or prefer a direct one-on-one approach, we customise our services to maximise the value of your business exit.
+                  </p>
+                  
+                  <p>
+                    Our commitment is to deliver value that significantly exceeds the investment in our services. We only work with business owners where we're confident we can add substantial value beyond our fees.
+                  </p>
+                  
+                  <div className="pt-4">
+                    <a 
+                      href="/booking" 
+                      className="btn-primary"
+                    >
+                      Schedule a Consultation
+                    </a>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-            
-            {/* Package 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-elegant border border-secondary-100 overflow-hidden"
-            >
-              <div className="p-6 bg-secondary-50 border-b border-secondary-100">
-                <h3 className="text-xl font-serif font-medium text-center">Custom Advisory</h3>
-              </div>
-              <div className="p-6">
-                <div className="text-center mb-6">
-                  <span className="text-3xl font-serif font-bold text-secondary-900">Custom</span>
-                  <span className="text-secondary-600 ml-2">pricing</span>
-                </div>
-                
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Tailored to your specific needs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Hourly or project-based billing</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Focus on specific aspects of exit</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 text-primary-700 mr-3 mt-0.5" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-secondary-700">Flexible engagement terms</span>
-                  </li>
-                </ul>
-                
-                <a 
-                  href="/contact" 
-                  className="block w-full py-3 px-4 text-center font-medium rounded-md border border-primary-700 text-primary-700 hover:bg-primary-50 transition-colors duration-200"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
       
       <CTASection 
-        title="Ready to maximize your business sale value?"
+        title="Ready to maximise your business sale value?"
         subtitle="Book a confidential consultation to discuss your exit strategy."
       />
     </main>

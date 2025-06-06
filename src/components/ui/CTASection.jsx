@@ -1,50 +1,55 @@
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
-const CTASection = ({ 
-  title = "Ready to maximise your business sale value?",
-  subtitle = "Book a confidential consultation to discuss your exit strategy.",
-  primaryButtonText = "Book a Consultation",
-  primaryButtonLink = "/booking",
-  secondaryButtonText = "Learn More",
-  secondaryButtonLink = "/services",
-  showSecondaryButton = true,
-  bgColor = "bg-primary-900"
-}) => {
+const CTASection = ({ title, subtitle }) => {
+  const navigate = useNavigate()
+  
   return (
-    <section className={`py-16 md:py-20 ${bgColor}`}>
+    <section className="section bg-primary-700 text-white">
       <div className="container-custom">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto"
-        >
-          <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-serif font-semibold mb-4"
+          >
             {title}
-          </h2>
-          <p className="text-lg md:text-xl text-primary-100 mb-8">
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-lg text-primary-50 mb-8"
+          >
             {subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link 
-              to={primaryButtonLink} 
-              className="btn bg-white text-primary-800 hover:bg-primary-50 focus:ring-white"
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row justify-center gap-4"
+          >
+            <button 
+              onClick={() => navigate('/booking')}
+              className="btn-white"
             >
-              {primaryButtonText}
-            </Link>
+              Book a Consultation
+            </button>
             
-            {showSecondaryButton && (
-              <Link 
-                to={secondaryButtonLink} 
-                className="btn bg-transparent text-white border border-white hover:bg-primary-800 focus:ring-white"
-              >
-                {secondaryButtonText}
-              </Link>
-            )}
-          </div>
-        </motion.div>
+            <button 
+              onClick={() => navigate('/contact')}
+              className="btn-outline-white"
+            >
+              Contact Us
+            </button>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
