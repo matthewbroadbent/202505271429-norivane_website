@@ -49,7 +49,7 @@ const ContactForm = ({ onSubmit }) => {
   }
   
   const revenueOptions = [
-    { value: '', label: 'Select annual revenue' },
+    { value: '', label: 'Select annual revenue (optional)' },
     { value: '1-5M', label: '£1M - £5M' },
     { value: '5-10M', label: '£5M - £10M' },
     { value: '10-20M', label: '£10M - £20M' },
@@ -145,14 +145,13 @@ const ContactForm = ({ onSubmit }) => {
           
           <div>
             <label htmlFor="revenue" className="block text-sm font-medium text-secondary-700 mb-1">
-              Annual Revenue *
+              Annual Revenue
             </label>
             <select
               id="revenue"
               name="revenue"
               value={formData.revenue}
               onChange={handleChange}
-              required
               className="w-full px-4 py-3 border border-secondary-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
             >
               {revenueOptions.map((option) => (

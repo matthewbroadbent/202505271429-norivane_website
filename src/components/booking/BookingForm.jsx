@@ -187,7 +187,7 @@ const BookingForm = ({ selectedSlot, onClose, onBack, onComplete }) => {
         
         <div>
           <label htmlFor="revenue" className="block text-sm font-medium text-secondary-700 mb-1">
-            Annual Revenue
+            Annual Revenue (Optional)
           </label>
           <select
             id="revenue"
@@ -196,7 +196,7 @@ const BookingForm = ({ selectedSlot, onClose, onBack, onComplete }) => {
             onChange={handleChange}
             className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-accent-500 focus:border-accent-500"
           >
-            <option value="">Select revenue range</option>
+            <option value="">Select revenue range (optional)</option>
             <option value="£1M - £5M">£1M - £5M</option>
             <option value="£5M - £10M">£5M - £10M</option>
             <option value="£10M - £20M">£10M - £20M</option>
