@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import SectionHeading from '../components/ui/SectionHeading'
 import CTASection from '../components/ui/CTASection'
 
@@ -8,6 +8,29 @@ const ProcessPage = () => {
     window.scrollTo(0, 0)
     document.title = 'Our Process | Norivane'
   }, [])
+  
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollY } = useScroll();
+  
+  // Parallax effects
+  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  
+  // Handle mouse movement for interactive elements
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      setMousePosition({
+        x: clientX / innerWidth - 0.5,
+        y: clientY / innerHeight - 0.5
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
   
   const processSteps = [
     {
@@ -27,7 +50,7 @@ const ProcessPage = () => {
       title: 'Comprehensive Business Assessment',
       description: 'We conduct a thorough evaluation of your business across multiple dimensions to establish a baseline and identify areas for improvement before going to market.',
       details: [
-        'Financial performance analysis and normalisation',
+        'Financial performance analysis and normalization',
         'Operational efficiency review',
         'Market position and competitive landscape assessment',
         'Team structure and dependency evaluation',
@@ -40,7 +63,7 @@ const ProcessPage = () => {
       title: 'Value Enhancement Implementation',
       description: 'Based on our assessment, we implement strategic improvements to increase your business value before approaching potential buyers.',
       details: [
-        'Financial performance optimisation',
+        'Financial performance optimization',
         'Operational efficiency improvements',
         'Customer concentration reduction strategies',
         'Recurring revenue enhancement',
@@ -51,11 +74,11 @@ const ProcessPage = () => {
     {
       number: '04',
       title: 'Exit Strategy Development',
-      description: 'We create a customised exit plan aligned with your timeline and goals, including valuation targets, potential buyer profiles, and deal structure preferences.',
+      description: 'We create a customized exit plan aligned with your timeline and goals, including valuation targets, potential buyer profiles, and deal structure preferences.',
       details: [
         'Valuation range establishment',
         'Exit option analysis (full sale, partial sale, management buyout)',
-        'Tax optimisation planning',
+        'Tax optimization planning',
         'Timeline development with key milestones',
         'Deal structure preferences documentation'
       ],
@@ -77,7 +100,7 @@ const ProcessPage = () => {
     {
       number: '06',
       title: 'Negotiation & Deal Structuring',
-      description: 'We guide you through the negotiation process, helping structure a deal that maximises upfront value while protecting your interests in earnouts and contingent payments.',
+      description: 'We guide you through the negotiation process, helping structure a deal that maximizes upfront value while protecting your interests in earnouts and contingent payments.',
       details: [
         'Initial offer evaluation and response strategy',
         'Term sheet and LOI negotiation',
@@ -104,9 +127,115 @@ const ProcessPage = () => {
   
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-primary-900">
-        <div className="container-custom">
+      {/* Hero Section with Floaty Bits */}
+      <section className="relative pt-32 pb-40 md:pt-40 md:pb-48 bg-[#001233] overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#001233] via-[#001845] to-[#023e8a] opacity-90"></div>
+          
+          {/* Background image with overlay */}
+          <div className="absolute inset-0 opacity-20">
+            <img 
+              src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              alt="" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          {/* Animated dots */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            backgroundSize: '30px 30px'
+          }}></div>
+          
+          {/* Animated floating elements */}
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#0077b6]/20 blur-[100px]"
+            animate={{
+              x: mousePosition.x * -30,
+              y: mousePosition.y * -30,
+            }}
+            transition={{ type: "spring", damping: 15 }}
+          ></motion.div>
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#00b4d8]/10 blur-[80px]"
+            animate={{
+              x: mousePosition.x * 30,
+              y: mousePosition.y * 30,
+            }}
+            transition={{ type: "spring", damping: 15 }}
+          ></motion.div>
+          
+          {/* Animated lines */}
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <motion.path
+              d="M0,100 Q400,150 800,100 T1600,100"
+              fill="none"
+              stroke="rgba(0, 180, 216, 0.1)"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M0,200 Q400,250 800,200 T1600,200"
+              fill="none"
+              stroke="rgba(0, 180, 216, 0.07)"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 2.5, ease: "easeInOut", delay: 0.2 }}
+            />
+            <motion.path
+              d="M0,300 Q400,350 800,300 T1600,300"
+              fill="none"
+              stroke="rgba(0, 180, 216, 0.05)"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 3, ease: "easeInOut", delay: 0.4 }}
+            />
+          </svg>
+          
+          {/* Floating geometric shapes */}
+          <motion.div
+            className="absolute top-1/3 right-1/4 w-16 h-16 border-2 border-[#00b4d8]/30 rounded-lg"
+            animate={{ 
+              rotate: 360,
+              y: [0, -20, 0],
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute bottom-1/3 left-1/5 w-12 h-12 border-2 border-[#00b4d8]/20 rounded-full"
+            animate={{ 
+              rotate: -360,
+              x: [0, 20, 0],
+            }}
+            transition={{ 
+              rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+              x: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute top-2/3 right-1/3 w-20 h-20 border border-[#90e0ef]/10"
+            style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.1, 1],
+            }}
+            transition={{ 
+              rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
+          ></motion.div>
+        </div>
+
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -121,24 +250,127 @@ const ProcessPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-primary-100"
+              className="text-xl text-[#caf0f8] mb-8"
             >
               A proven methodology refined through dozens of successful business exits
             </motion.p>
           </div>
         </div>
+        
+        {/* Scroll indicator - moved up to ensure visibility */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          style={{ opacity }}
+          className="absolute bottom-24 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
+          onClick={() => {
+            window.scrollBy({
+              top: window.innerHeight,
+              behavior: 'smooth'
+            });
+          }}
+        >
+          <span className="text-[#caf0f8] text-sm mb-2">Explore Our Process</span>
+          <div className="w-6 h-10 border-2 border-[#caf0f8]/30 rounded-full flex justify-center">
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-2 h-2 bg-[#caf0f8] rounded-full mt-2"
+            />
+          </div>
+        </motion.div>
       </section>
       
-      {/* Process Overview */}
-      <section className="section">
+      {/* Wave Transition - Reduced height */}
+      <div className="relative h-16 md:h-24 bg-white">
+        {/* Main wave */}
+        <svg 
+          className="absolute bottom-full left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <motion.path 
+            initial={{ d: "M0,320L1440,320L1440,320L0,320Z" }}
+            animate={{ d: "M0,320L1440,320L1440,250C1320,290,1200,310,1080,290C960,270,840,210,720,192C600,170,480,190,360,210C240,230,120,250,60,260L0,270Z" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            fill="#ffffff"
+          ></motion.path>
+        </svg>
+        
+        {/* Secondary decorative waves */}
+        <svg 
+          className="absolute bottom-full left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <motion.path 
+            initial={{ d: "M0,320L1440,320L1440,320L0,320Z", opacity: 0 }}
+            animate={{ 
+              d: "M0,320L1440,320L1440,280C1320,300,1200,310,1080,300C960,290,840,270,720,260C600,250,480,250,360,260C240,270,120,290,60,300L0,310Z",
+              opacity: 0.1
+            }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
+            fill="#00b4d8"
+          ></motion.path>
+        </svg>
+        
+        <svg 
+          className="absolute bottom-full left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <motion.path 
+            initial={{ d: "M0,320L1440,320L1440,320L0,320Z", opacity: 0 }}
+            animate={{ 
+              d: "M0,320L1440,320L1440,290C1320,300,1200,300,1080,290C960,280,840,260,720,250C600,240,480,240,360,250C240,260,120,280,60,290L0,300Z",
+              opacity: 0.05
+            }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            fill="#0077b6"
+          ></motion.path>
+        </svg>
+        
+        {/* Floating particles in the wave area */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 rounded-full bg-[#00b4d8]/30"
+              initial={{ 
+                x: Math.random() * 100 + "%", 
+                y: "100%", 
+                opacity: 0.3 + Math.random() * 0.7,
+                scale: 0.5 + Math.random() * 1
+              }}
+              animate={{ 
+                y: "0%", 
+                opacity: 0
+              }}
+              transition={{ 
+                duration: 3 + Math.random() * 5, 
+                repeat: Infinity, 
+                ease: "easeOut",
+                delay: Math.random() * 5
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Process Overview - Reduced top padding */}
+      <section className="pt-8 pb-16 md:pt-12 md:pb-20">
         <div className="container-custom">
           <SectionHeading
             title="Our Proven Exit Process"
-            subtitle="A structured step by step approach to maximise your business value and ensure a successful transition"
+            subtitle="A structured approach to maximize your business value and ensure a successful transition"
             align="center"
           />
           
-          <div className="mt-16 space-y-24">
+          <div className="mt-12 space-y-24">
             {processSteps.map((step, index) => (
               <div 
                 key={index} 
@@ -339,7 +571,7 @@ const ProcessPage = () => {
                   <div className="md:w-1/2 md:pr-12 md:text-right">
                     <h3 className="text-xl font-serif font-medium mb-2">Months 10-12: Closing & Transition</h3>
                     <p className="text-secondary-600">
-                      Finalisation of the purchase agreement, closing of the transaction, and implementation of the transition plan.
+                      Finalization of the purchase agreement, closing of the transaction, and implementation of the transition plan.
                     </p>
                   </div>
                   

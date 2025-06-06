@@ -21,38 +21,38 @@ const HomePage = () => {
       {/* Hero Section */}
       <Hero />
       
-      {/* About Section with Premium Design Elements */}
-      <div id="about-section" className="relative bg-white pt-16 md:pt-24 overflow-hidden">
+      {/* About Section with Premium Design Elements - Reduced top padding */}
+      <div id="about-section" className="relative bg-white pt-8 pb-16 md:pt-12 md:pb-20 overflow-hidden">
         <About />
       </div>
       
-      {/* Services Section with Premium Design */}
-      <div className="relative bg-gradient-to-b from-white to-primary-50 py-24 overflow-hidden">
+      {/* Services Section with Premium Design - Reduced top margin */}
+      <div className="relative bg-gradient-to-b from-white to-primary-50 py-20 overflow-hidden">
         <Services />
       </div>
       
       {/* Stats Section with Premium Design */}
-      <div className="relative bg-primary-900 text-white py-24 overflow-hidden">
+      <div className="relative bg-primary-900 text-white py-20 overflow-hidden">
         <Stats />
       </div>
       
       {/* Process Section with Premium Design */}
-      <div className="relative bg-white py-24 overflow-hidden">
+      <div className="relative bg-white py-20 overflow-hidden">
         <Process />
       </div>
       
       {/* Testimonials Section with Premium Design */}
-      <div className="relative bg-gradient-to-b from-white to-primary-50 py-24 overflow-hidden">
+      <div className="relative bg-gradient-to-b from-white to-primary-50 py-20 overflow-hidden">
         <Testimonials />
       </div>
       
       {/* FAQ Section with Premium Design */}
-      <div className="relative bg-white py-24 overflow-hidden">
+      <div className="relative bg-white py-20 overflow-hidden">
         <FAQ />
       </div>
       
       {/* Final CTA Section with Premium Design */}
-      <div className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-24 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20 overflow-hidden">
         <CTASection />
       </div>
     </>

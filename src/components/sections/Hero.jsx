@@ -31,7 +31,7 @@ const Hero = () => {
   return (
     <div className="relative" ref={heroRef}>
       {/* Main Hero Section - Increased height */}
-      <section className="relative bg-[#001233] pt-32 pb-48 md:pt-40 md:pb-64 lg:pt-48 lg:pb-80 overflow-hidden">
+      <section className="relative bg-[#001233] pt-32 pb-40 md:pt-40 md:pb-48 lg:pt-48 lg:pb-64 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
           {/* Gradient overlay */}
@@ -163,7 +163,7 @@ const Hero = () => {
                 <span className="block">Strategic Exit</span>
                 <span className="block">Planning for</span>
                 <span className="relative">
-                  Visionary Business Owners
+                  Visionary MDs and CEOs
                   <motion.span 
                     className="absolute -bottom-3 left-0 h-1 bg-[#00b4d8]"
                     initial={{ width: 0 }}
@@ -314,13 +314,13 @@ const Hero = () => {
             </motion.div>
           </div>
           
-          {/* Scroll indicator */}
+          {/* Scroll indicator - moved up to ensure visibility */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
             style={{ opacity }}
-            className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
+            className="absolute bottom-24 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
             onClick={() => {
               const aboutSection = document.getElementById('about-section');
               if (aboutSection) {
@@ -340,8 +340,8 @@ const Hero = () => {
         </div>
       </section>
       
-      {/* Wave Transition - Dramatic Curved Implementation */}
-      <div className="relative h-32 md:h-48 bg-white">
+      {/* Wave Transition - Reduced height from h-32 md:h-48 to h-16 md:h-24 */}
+      <div className="relative h-16 md:h-24 bg-white">
         {/* Main wave */}
         <svg 
           className="absolute bottom-full left-0 w-full"
