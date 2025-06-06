@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from '../components/ui/ContactForm';
-import CalendarButton from '../components/booking/CalendarButton';
+import BookingButton from '../components/booking/BookingButton';
 
 const ContactPage = () => {
   useEffect(() => {
@@ -62,7 +62,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-secondary-800">Phone</h4>
-                    <p className="text-secondary-600">+1 (800) 555-1234</p>
+                    <p className="text-secondary-600">+44 (0) 7356 224 125</p>
                   </div>
                 </div>
                 
@@ -74,24 +74,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-secondary-800">Email</h4>
-                    <p className="text-secondary-600">info@norivane.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-secondary-800">Office</h4>
-                    <p className="text-secondary-600">
-                      123 Business Avenue<br />
-                      Suite 456<br />
-                      New York, NY 10001
-                    </p>
+                    <p className="text-secondary-600">us@norivane.com</p>
                   </div>
                 </div>
               </div>
@@ -101,7 +84,7 @@ const ContactPage = () => {
                 <p className="text-secondary-600 mb-4">
                   Ready to discuss your business exit strategy? Schedule a 30-minute consultation with one of our experts.
                 </p>
-                <CalendarButton />
+                <BookingButton text="Book a Consultation" className="btn-primary" />
               </div>
             </motion.div>
             
