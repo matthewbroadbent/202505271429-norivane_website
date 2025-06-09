@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
+import ProcessPage from './pages/ProcessPage';
 import ContactPage from './pages/ContactPage';
 import BookingPage from './pages/BookingPage';
 import BookingConfirmationPage from './pages/BookingConfirmationPage';
@@ -44,9 +45,10 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/process" element={<ProcessPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookingPage />} />
-            <Route path="/booking" element={<BookingPage />} /> {/* Added this route to match the URL you're trying to access */}
+            <Route path="/booking" element={<BookingPage />} />
             <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />
