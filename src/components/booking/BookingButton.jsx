@@ -1,33 +1,28 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import BookingModal from './BookingModal';
+import { useNavigate } from 'react-router-dom';
 
 const BookingButton = ({ 
   text = "Book a Consultation", 
   className = "btn-primary",
   fullWidth = false
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
   
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const handleClick = () => {
+    // Navigate to the booking page with embedded Google Calendar
+    navigate('/book');
+  };
   
   return (
-    <>
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        onClick={openModal}
-        className={`${className} ${fullWidth ? 'w-full' : ''}`}
-      >
-        {text}
-      </motion.button>
-      
-      <BookingModal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-      />
-    </>
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={handleClick}
+      className={`${className} ${fullWidth ? 'w-full' : ''}`}
+    >
+      {text}
+    </motion.button>
   );
 };
 

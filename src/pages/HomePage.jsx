@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
 import Services from '../components/sections/Services'

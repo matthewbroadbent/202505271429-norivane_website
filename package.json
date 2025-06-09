@@ -23,7 +23,8 @@
     "gapi-script": "^1.2.0",
     "react-google-calendar-api": "^2.2.2",
     "axios": "^1.6.2",
-    "emailjs-com": "^3.2.0"
+    "emailjs-com": "^3.2.0",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
