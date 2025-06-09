@@ -46,6 +46,7 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookingPage />} />
+            <Route path="/booking" element={<BookingPage />} /> {/* Added this route to match the URL you're trying to access */}
             <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />

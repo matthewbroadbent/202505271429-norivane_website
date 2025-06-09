@@ -538,15 +538,6 @@ const ServicesPage = () => {
                   <p>
                     Our commitment is to deliver value that significantly exceeds the investment in our services. We only work with business owners where we're confident we can add substantial value beyond our fees.
                   </p>
-                  
-                  <div className="pt-4">
-                    <a 
-                      href="/booking" 
-                      className="btn-primary"
-                    >
-                      Schedule a Consultation
-                    </a>
-                  </div>
                 </motion.div>
               </div>
             </div>
