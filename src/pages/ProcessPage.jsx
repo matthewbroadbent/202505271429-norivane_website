@@ -638,7 +638,7 @@ const ProcessPage = () => {
               className="bg-white rounded-lg shadow-elegant p-6 md:p-8 text-center"
             >
               <div className="text-4xl md:text-5xl font-serif font-bold text-primary-700 mb-2">
-                45+
+                25+
               </div>
               <h3 className="text-lg md:text-xl font-medium text-secondary-900 mb-2">
                 Businesses Sold
