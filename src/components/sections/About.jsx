@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
+import { useNavigate } from 'react-router-dom'
 
 const About = () => {
+  const navigate = useNavigate();
+  
   return (
     <section id="about" className="section">
       <div className="container-custom">
@@ -47,8 +50,8 @@ const About = () => {
               
               <div className="pt-4">
                 <a 
-                  href="/about" 
-                  className="btn-accent"
+                  onClick={() => navigate('/process')}
+                  className="btn-accent cursor-pointer"
                 >
                   Learn More About Our Approach
                 </a>
