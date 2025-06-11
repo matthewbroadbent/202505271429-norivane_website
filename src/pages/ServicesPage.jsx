@@ -46,7 +46,8 @@ const ServicesPage = () => {
         'Tax optimisation strategies',
         'Personal financial planning integration'
       ],
-      image: 'https://images.pexels.com/photos/7681926/pexels-photo-7681926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      // Updated image URL to a more reliable one
+      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
     },
     {
       id: 'valuation',
@@ -371,6 +372,12 @@ const ServicesPage = () => {
                     src={service.image} 
                     alt={service.title} 
                     className="rounded-lg shadow-elegant-lg w-full h-auto object-cover"
+                    // Added error handling for image loading
+                    onError={(e) => {
+                      console.error(`Failed to load image for ${service.title}`, e);
+                      // Fallback image if the original fails to load
+                      e.target.src = "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+                    }}
                   />
                 </motion.div>
                 
