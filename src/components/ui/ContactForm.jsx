@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import emailjs from 'emailjs-com'
+import { getEmailJSConfig } from '../../utils/emailjs'
 
 const ContactForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -47,17 +48,21 @@ const ContactForm = ({ onSubmit }) => {
         message: formData.message,
       }
       
-      // Replace these with your actual EmailJS service, template, and user IDs
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-      const userId = import.meta.env.VITE_EMAILJS_USER_ID
+      // Get EmailJS configuration
+      const { serviceId, templateId, userId } = getEmailJSConfig();
+      
+      console.log('EmailJS Config:', {
+        serviceId: serviceId ? 'Set' : 'Not set',
+        templateId: templateId ? 'Set' : 'Not set',
+        userId: userId ? 'Set' : 'Not set'
+      })
       
       if (!serviceId || !templateId || !userId) {
-        console.error('EmailJS configuration is missing. Please check your environment variables.')
+        console.error('EmailJS configuration is missing. Please check your environment variables or fallback configuration.')
         setFormStatus({
           submitted: true,
           success: false,
-          message: 'There was an error sending your message. Please try again later or contact us directly.',
+          message: 'There was an error sending your message. Please contact us directly at us@norivane.com.',
         })
         setIsSubmitting(false)
         return
@@ -91,7 +96,7 @@ const ContactForm = ({ onSubmit }) => {
       setFormStatus({
         submitted: true,
         success: false,
-        message: 'There was an error sending your message. Please try again later or contact us directly.',
+        message: `There was an error sending your message. Please try again later or contact us directly at us@norivane.com.`,
       })
     } finally {
       setIsSubmitting(false)
