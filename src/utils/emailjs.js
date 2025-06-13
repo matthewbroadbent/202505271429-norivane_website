@@ -1,12 +1,15 @@
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 // IMPORTANT: Replace these empty values with your actual EmailJS credentials
 // This approach allows the site to work even if environment variables aren't set
 const PRODUCTION_CONFIG = {
-  USER_ID: '',    // sSDnT1cA_qkR3BmGF
-  SERVICE_ID: '', // service_m0qgr6d
-  TEMPLATE_ID: '' // template_rwsra3u
+  USER_ID: '',    // Your EmailJS User ID
+  SERVICE_ID: '', // Your EmailJS Service ID
+  TEMPLATE_ID: '' // Your EmailJS Template ID
 };
+
+// Initialize EmailJS with public key
+emailjs.init(import.meta.env.VITE_EMAILJS_USER_ID || PRODUCTION_CONFIG.USER_ID);
 
 export const getEmailJSConfig = () => {
   // First try to get values from environment variables
@@ -34,7 +37,7 @@ export const initializeEmailJS = () => {
   }
   
   try {
-    emailjs.init(userId);
+    // Already initialized at the top of the file
     console.log('EmailJS initialized successfully');
     return true;
   } catch (error) {

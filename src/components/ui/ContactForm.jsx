@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
 import { getEmailJSConfig } from '../../utils/emailjs'
 
 const ContactForm = ({ onSubmit }) => {
@@ -49,15 +49,14 @@ const ContactForm = ({ onSubmit }) => {
       }
       
       // Get EmailJS configuration
-      const { serviceId, templateId, userId } = getEmailJSConfig();
+      const { serviceId, templateId } = getEmailJSConfig();
       
       console.log('EmailJS Config:', {
         serviceId: serviceId ? 'Set' : 'Not set',
-        templateId: templateId ? 'Set' : 'Not set',
-        userId: userId ? 'Set' : 'Not set'
+        templateId: templateId ? 'Set' : 'Not set'
       })
       
-      if (!serviceId || !templateId || !userId) {
+      if (!serviceId || !templateId) {
         console.error('EmailJS configuration is missing. Please check your environment variables or fallback configuration.')
         setFormStatus({
           submitted: true,
@@ -68,11 +67,11 @@ const ContactForm = ({ onSubmit }) => {
         return
       }
       
+      // Using the newer recommended approach with @emailjs/browser
       const response = await emailjs.send(
         serviceId,
         templateId,
-        templateParams,
-        userId
+        templateParams
       )
       
       console.log('EmailJS SUCCESS:', response)
