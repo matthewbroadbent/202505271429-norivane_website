@@ -7,15 +7,18 @@ import Stats from '../components/sections/Stats'
 import Testimonials from '../components/sections/Testimonials'
 import FAQ from '../components/sections/FAQ'
 import CTASection from '../components/ui/CTASection'
+import MetaTags from '../components/seo/MetaTags'
+import { seoData } from '../data/seoData'
 
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'Norivane | Exit Strategy Coaching for Established Businesses'
   }, [])
   
   return (
     <>
+      <MetaTags {...seoData.home} />
+      
       {/* Hero Section */}
       <Hero />
       
