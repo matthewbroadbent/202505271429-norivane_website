@@ -49,14 +49,37 @@ const ContactForm = ({ onSubmit }) => {
       }
       
       // Get EmailJS configuration
-      const { serviceId, templateId } = getEmailJSConfig();
+      const { serviceId, templateId, userId } = getEmailJSConfig();
       
       console.log('EmailJS Config:', {
+        userId: userId ? 'Set' : 'Not set',
         serviceId: serviceId ? 'Set' : 'Not set',
         templateId: templateId ? 'Set' : 'Not set'
       })
       
       if (!serviceId || !templateId) {
+        // For development/testing, simulate successful submission
+        if (!import.meta.env.PROD) {
+          console.log('Development mode: Simulating successful email submission');
+          setFormStatus({
+            submitted: true,
+            success: true,
+            message: 'Thank you for your message. We will be in touch shortly. (Development mode)',
+          });
+          
+          // Reset form after successful submission
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            revenue: '',
+            message: '',
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        
         console.error('EmailJS configuration is missing. Please check your environment variables or fallback configuration.')
         setFormStatus({
           submitted: true,

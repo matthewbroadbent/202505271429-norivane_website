@@ -3,9 +3,9 @@ import emailjs from '@emailjs/browser';
 // IMPORTANT: Replace these empty values with your actual EmailJS credentials
 // This approach allows the site to work even if environment variables aren't set
 const PRODUCTION_CONFIG = {
-  USER_ID: '',    // Your EmailJS User ID
-  SERVICE_ID: '', // Your EmailJS Service ID
-  TEMPLATE_ID: '' // Your EmailJS Template ID
+  USER_ID: 'your_user_id',    // Your EmailJS User ID
+  SERVICE_ID: 'your_service_id', // Your EmailJS Service ID
+  TEMPLATE_ID: 'your_template_id' // Your EmailJS Template ID
 };
 
 // Initialize EmailJS with public key
