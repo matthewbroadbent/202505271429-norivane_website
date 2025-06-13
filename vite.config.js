@@ -15,7 +15,7 @@ export default defineConfig({
       }
     },
     sourcemap: false,
-    minify: false, // Disable built-in minification completely
+    minify: 'terser', // Use terser for minification
     target: 'es2015'
   },
   server: {
