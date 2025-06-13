@@ -15,6 +15,7 @@ const Header = () => {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Process', href: '/process' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ]
   
@@ -48,7 +49,7 @@ const Header = () => {
                 key={item.name}
                 to={item.href}
                 className={`text-sm font-medium transition-colors duration-200 ${
-                  location.pathname === item.href
+                  location.pathname === item.href || (item.href === '/blog' && location.pathname.startsWith('/blog/'))
                     ? isScrolled ? 'text-accent-500 font-semibold' : 'text-accent-400 font-semibold'
                     : isScrolled 
                       ? 'text-secondary-700 hover:text-accent-500' 
@@ -92,7 +93,7 @@ const Header = () => {
                   key={item.name}
                   to={item.href}
                   className={`text-base font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
-                    location.pathname === item.href
+                    location.pathname === item.href || (item.href === '/blog' && location.pathname.startsWith('/blog/'))
                       ? 'bg-accent-50 text-accent-500 font-semibold'
                       : 'text-secondary-700 hover:bg-secondary-50 hover:text-accent-500'
                   }`}
